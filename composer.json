@@ -1,0 +1,22 @@
+{
+    "name": "lajax/yii2-language-picker",
+    "description": "Yii2 Language Picker Widget",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","widget","languagepicker","translate","multilanguage","sample"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Lajos Molnar",
+            "email": "lajax.m@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "lajax\\languagepicker\\": ""
+        }
+    },
+    "require": {
+        "yiisoft/yii2": "*",
+        "phpspec/php-diff": ">=1.0.2"
+    }
+}

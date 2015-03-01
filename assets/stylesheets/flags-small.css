@@ -1,0 +1,77 @@
+/** 
+ * Created on : 2015.02.02., 16:43:29
+ * Author     : Lajos Molnar <lajax.m@gmail.com>
+ * FlagSprite : http://www.flag-sprites.com/
+ */
+
+.language-picker.small i {
+	width: 16px;
+	height: 11px;
+    display:inline-block;
+	background-image:url('../images/flags-small.png');
+    background-repeat: no-repeat;
+}
+
+.language-picker.small i.ar-AR, .language-picker.small i.ar-AE, .language-picker.small i.ae , .language-picker.small i.ar {background-position: -16px 0}
+.language-picker.small i.ps-AF, .language-picker.small i.ps {background-position: -32px 0}
+.language-picker.small i.sq-AL, .language-picker.small i.sq {background-position: -48px 0}
+.language-picker.small i.hy-AM, .language-picker.small i.hy {background-position: -64px 0}
+.language-picker.small i.az-AZ, .language-picker.small i.az {background-position: -80px 0}
+.language-picker.small i.bs-BA, .language-picker.small i.bs {background-position: -96px 0}
+.language-picker.small i.bg-BG, .language-picker.small i.bg {background-position: -112px 0}
+.language-picker.small i.pt-BR {background-position: 0 -11px}
+.language-picker.small i.be-BY, .language-picker.small i.be {background-position: -16px -11px}
+.language-picker.small i.fr-CA {background-position: -32px -11px}
+.language-picker.small i.zh-CN, .language-picker.small i.zh {background-position: -48px -11px}
+.language-picker.small i.cs-CZ, .language-picker.small i.cs {background-position: -64px -11px}
+.language-picker.small i.de-DE, .language-picker.small i.de {background-position: -80px -11px}
+.language-picker.small i.da-DK, .language-picker.small i.da {background-position: -96px -11px}
+.language-picker.small i.et-EE, .language-picker.small i.et {background-position: -112px -11px}
+.language-picker.small i.es-ES, .language-picker.small i.eu-ES, .language-picker.small i.ca-ES, .language-picker.small i.gl-ES, .language-picker.small i.es {background-position: 0 -22px}
+.language-picker.small i.fi-FI, .language-picker.small i.fi {background-position: -16px -22px}
+.language-picker.small i.fo-FO, .language-picker.small i.fo {background-position: -32px -22px}
+.language-picker.small i.fr-FR, .language-picker.small i.fr {background-position: -48px -22px}
+.language-picker.small i.en-UK, .language-picker.small i.en-GB, .language-picker.small i.en-PI, .language-picker.small i.en-UD, .language-picker.small i.en {background-position: -64px -22px}
+.language-picker.small i.ka-GE, .language-picker.small i.ka {background-position: -80px -22px}
+.language-picker.small i.el-GR, .language-picker.small i.el {background-position: -96px -22px}
+.language-picker.small i.zh-HK {background-position: -112px -22px}
+.language-picker.small i.hr-HR, .language-picker.small i.hr {background-position: 0 -33px}
+.language-picker.small i.hu-HU, .language-picker.small i.hu {background-position: -16px -33px}
+.language-picker.small i.id-ID, .language-picker.small i.id {background-position: -32px -33px}
+.language-picker.small i.ga-IE, .language-picker.small i.ga {background-position: -48px -33px}
+.language-picker.small i.he-IL, .language-picker.small i.he {background-position: -64px -33px}
+.language-picker.small i.pa-IN, .language-picker.small i.ta-IN, .language-picker.small i.te-IN, .language-picker.small i.hi-IN, .language-picker.small i.bn-IN, .language-picker.small i.ml-IN, .language-picker.small i.hi {background-position: -80px -33px}
+.language-picker.small i.fa-IR, .language-picker.small i.fa {background-position: -96px -33px}
+.language-picker.small i.is-IS, .language-picker.small i.is {background-position: -112px -33px}
+.language-picker.small i.it-IT, .language-picker.small i.it {background-position: 0 -44px}
+.language-picker.small i.ja-JP, .language-picker.small i.jp {background-position: -16px -44px}
+.language-picker.small i.sw-KE, .language-picker.small i.sw  {background-position: -32px -44px}
+.language-picker.small i.km-KH, .language-picker.small i.km {background-position: -48px -44px}
+.language-picker.small i.ko-KR, .language-picker.small i.ko {background-position: -64px -44px}
+.language-picker.small i.ku-TR, .language-picker.small i.ku {background-position: -80px -44px}
+.language-picker.small i.es-LA {background-position: -96px -44px}
+.language-picker.small i.fb-LT, .language-picker.small i.lt-LT, .language-picker.small i.lt {background-position: -112px -44px}
+.language-picker.small i.lv-LV, .language-picker.small i.lv {background-position: 0 -55px}
+.language-picker.small i.mk-MK, .language-picker.small i.mk {background-position: -16px -55px}
+.language-picker.small i.ms-MY, .language-picker.small i.ms {background-position: -32px -55px}
+.language-picker.small i.nl-NL, .language-picker.small i.fy-NL, .language-picker.small i.nl {background-position: -48px -55px}
+.language-picker.small i.nn-NO, .language-picker.small i.nb-NO, .language-picker.small i.nb.flag.flag-no {background-position: -64px -55px}
+.language-picker.small i.ne-NP, .language-picker.small i.ne {background-position: -80px -55px}
+.language-picker.small i.tl-PH, .language-picker.small i.tl {background-position: -96px -55px}
+.language-picker.small i.pl-PL, .language-picker.small i.pl {background-position: -112px -55px}
+.language-picker.small i.pt-PT, .language-picker.small i.pt {background-position: 0 -66px}
+.language-picker.small i.ro-RO, .language-picker.small i.ro {background-position: -16px -66px}
+.language-picker.small i.sr-RS, .language-picker.small i.sr {background-position: -32px -66px}
+.language-picker.small i.ru-RU, .language-picker.small i.ru {background-position: -48px -66px}
+.language-picker.small i.sv-SE, .language-picker.small i.sv {background-position: -64px -66px}
+.language-picker.small i.sl-SI, .language-picker.small i.sl {background-position: -80px -66px}
+.language-picker.small i.sk-SK, .language-picker.small i.sk {background-position: -96px -66px}
+.language-picker.small i.th-TH, .language-picker.small i.th {background-position: -112px -66px}
+.language-picker.small i.tr-TR, .language-picker.small i.tr {background-position: 0 -77px}
+.language-picker.small i.zh-TW {background-position: -16px -77px}
+.language-picker.small i.uk-UA, .language-picker.small i.uk {background-position: -32px -77px}
+.language-picker.small i.en-US {background-position: -48px -77px}
+.language-picker.small i.la-VA, .language-picker.small i.la {background-position: -64px -77px}
+.language-picker.small i.vi-VN, .language-picker.small i.vi {background-position: -80px -77px}
+.language-picker.small i.cy-GB, .language-picker.small i.cy {background-position: -96px -77px}
+.language-picker.small i.af-ZA, .language-picker.small i.af {background-position: -112px -77px}
