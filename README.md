@@ -17,13 +17,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 
 Either run
 
-```
+```json
 php composer.phar require --prefer-dist lajax/yii2-language-picker "1.*"
 ```
 
 or add
 
-```
+```json
 "lajax/yii2-language-picker": "1.*"
 ```
 
@@ -36,7 +36,7 @@ Identifier of the language element. e.g.: en, en-US
 
 ####Minimal configuration (icons only)
 
-```
+```php
 'language' => 'en',
 'bootstrap' => ['languagepicker'],
 'components' => [
@@ -48,7 +48,8 @@ Identifier of the language element. e.g.: en, en-US
 ```
 
 ####Minimal configuration (icons and text)
-```
+
+```php
 'language' => 'en',
 'bootstrap' => ['languagepicker'],
 'components' => [
@@ -61,7 +62,7 @@ Identifier of the language element. e.g.: en, en-US
 
 ####Full configuration (icons only)
 
-```
+```php
 'language' => 'en-US',
 'bootstrap' => ['languagepicker'],
 'components' => [
@@ -72,7 +73,7 @@ Identifier of the language element. e.g.: en, en-US
         'expireDays' => 64,                                 // The expiration time of the cookie is 64 days.
         'callback' => function() {
             if (!\Yii::$app->user->isGuest) {
-                $user = User::findOne(\Yii::$app->user->id);
+                $user = \Yii::$app->user->identity;
                 $user->language = \Yii::$app->language;
                 $user->save();
             }
@@ -84,7 +85,8 @@ Identifier of the language element. e.g.: en, en-US
 ###Yii2-translate-manager integration
 
 ####Minimal configuration (icons only)
-```
+
+```php
 'language' => 'en',
 'bootstrap' => ['languagepicker'],
 'components' => [
@@ -99,7 +101,7 @@ Identifier of the language element. e.g.: en, en-US
 
 ####Full configuration (icons and text)
 
-```
+```php
 'language' => 'en-US',
 'bootstrap' => ['languagepicker'],
 'components' => [
@@ -112,7 +114,7 @@ Identifier of the language element. e.g.: en, en-US
         'expireDays' => 64,                                 // The expiration time of the cookie is 64 days.
         'callback' => function() {
             if (!\Yii::$app->user->isGuest) {
-                $user = User::findOne(\Yii::$app->user->id);
+                $user = \Yii::$app->user->identity;
                 $user->language = \Yii::$app->language;
                 $user->save();
             }
@@ -127,7 +129,7 @@ To use the widget, the value of the enablePrettyUrl property in the urlManager c
 
 example:
 
-```
+```php
 'components' => [
     // ...
     'urlManager' => [
@@ -151,7 +153,7 @@ Usage
 
 ####Displaying pre-defined languate picker buttons (icons and text or icons only):
 
-```
+```php
 <?= \lajax\languagepicker\widgets\LanguagePicker::widget([
     'skin' => \lajax\languagepicker\widgets\LanguagePicker::SKIN_BUTTON,
     'size' => \lajax\languagepicker\widgets\LanguagePicker::SIZE_SMALL
@@ -160,7 +162,7 @@ Usage
 
 ####Displaying pre-defined languate picker dropdown list (icons and text or icons only):
 
-```
+```php
 <?= \lajax\languagepicker\widgets\LanguagePicker::widget([
     'skin' => \lajax\languagepicker\widgets\LanguagePicker::SKIN_DROPDOWN,
     'size' => \lajax\languagepicker\widgets\LanguagePicker::SIZE_LARGE
@@ -170,7 +172,7 @@ Usage
 
 ####Customising the language picker:
 
-```
+```php
 <?= \lajax\languagepicker\widgets\LanguagePicker::widget([
     'itemTemplate' => '<li><a href="{link}" title="{language}"><i id="{language}"></i> {name}</a></li>',
     'activeItemTemplate' => '<a href="{link}" title="{language}"><i id="{language}"></i> {name}</a>',
