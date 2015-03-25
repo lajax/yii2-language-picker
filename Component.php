@@ -63,7 +63,7 @@ class Component extends \yii\base\Component {
     /**
      * @var string Name of the cookie.
      */
-    public $cookieNeme = 'language';
+    public $cookieName = 'language';
 
     /**
      * @var array List of available languages
