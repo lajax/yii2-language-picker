@@ -15,7 +15,7 @@ var LanguagePicker = {
     },
     change: function (url) {
         $.get(url, {}, function () {
-            document.location.reload()
+            document.location.reload();
         });
     }
-}
+};
