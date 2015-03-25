@@ -176,7 +176,7 @@ Usage
 <?= \lajax\languagepicker\widgets\LanguagePicker::widget([
     'itemTemplate' => '<li><a href="{link}" title="{language}"><i id="{language}"></i> {name}</a></li>',
     'activeItemTemplate' => '<a href="{link}" title="{language}"><i id="{language}"></i> {name}</a>',
-    'parentTemplate' => '<div id="language-picker" class="dropdown-list {size}"><div>{activeItem}<ul>{items}</ul></div></div>',
+    'parentTemplate' => '<div class="language-picker dropdown-list {size}"><div>{activeItem}<ul>{items}</ul></div></div>',
     'languageAsset' => 'lajax\languagepicker\bundles\LanguageLargeIconsAsset',      // StyleSheets
     'languagePluginAsset' => 'lajax\languagepicker\bundles\LanguagePluginAsset',    // JavaScripts
 ]); ?>
