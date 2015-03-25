@@ -63,7 +63,7 @@ class Component extends \yii\base\Component {
     /**
      * @var string Name of the cookie.
      */
-    public $cookieNeme = 'language';
+    public $cookieName = 'language';
 
     /**
      * @var array List of available languages
@@ -114,11 +114,11 @@ class Component extends \yii\base\Component {
             } else if (!Yii::$app->request->isAjax) {
                 return $this->_redirect();
             }
-        } else if (Yii::$app->request->cookies->has($this->cookieNeme)) {
-            if ($this->_isValidLanguage(Yii::$app->request->cookies->getValue($this->cookieNeme))) {
-                Yii::$app->language = Yii::$app->request->cookies->getValue($this->cookieNeme);
+        } else if (Yii::$app->request->cookies->has($this->cookieName)) {
+            if ($this->_isValidLanguage(Yii::$app->request->cookies->getValue($this->cookieName))) {
+                Yii::$app->language = Yii::$app->request->cookies->getValue($this->cookieName);
             } else {
-                Yii::$app->response->cookies->remove($this->cookieNeme);
+                Yii::$app->response->cookies->remove($this->cookieName);
             }
         }
     }
