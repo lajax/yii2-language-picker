@@ -131,7 +131,7 @@ class Component extends \yii\base\Component {
 
         Yii::$app->language = $language;
         $cookie = new \yii\web\Cookie([
-            'name' => $this->cookieNeme,
+            'name' => $this->cookieName,
             'value' => $language,
             'expire' => time() + 86400 * $this->expireDays
         ]);
