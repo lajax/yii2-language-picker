@@ -61,6 +61,6 @@
     display:none;
 }
 
-.language-picker.dropdown-list:hover ul {
+.language-picker.dropdown-list:hover ul, .language-picker.dropdown-list ul.active {
     display:block;
 }

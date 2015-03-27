@@ -72,7 +72,7 @@ class LanguagePicker extends \yii\base\Widget {
     private $_SKINS = [
         self::SKIN_DROPDOWN => [
             'itemTemplate' => '<li><a href="{link}" title="{language}"><i class="{language}"></i> {name}</a></li>',
-            'activeItemTemplate' => '<a href="{link}" title="{language}"><i class="{language}"></i> {name}</a>',
+            'activeItemTemplate' => '<a href="javascript:void(0);" title="{language}"><i class="{language}"></i> {name}</a>',
             'parentTemplate' => '<div class="language-picker dropdown-list {size}"><div>{activeItem}<ul>{items}</ul></div></div>',
         ],
         self::SKIN_BUTTON => [
