@@ -150,7 +150,7 @@ class LanguagePicker extends \yii\base\Widget {
     /**
      * @var string Anchor text for the link that sets the language.
      */
-    public $link = '/?language-picker&language={language}';
+    public $link = '/?language-picker-language={language}';
 
     /**
      * @inheritdoc
