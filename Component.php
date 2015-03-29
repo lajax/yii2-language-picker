@@ -117,10 +117,13 @@ class Component extends \yii\base\Component {
         } else if (Yii::$app->request->cookies->has($this->cookieName)) {
             if ($this->_isValidLanguage(Yii::$app->request->cookies->getValue($this->cookieName))) {
                 Yii::$app->language = Yii::$app->request->cookies->getValue($this->cookieName);
+                return;
             } else {
                 Yii::$app->response->cookies->remove($this->cookieName);
             }
         }
+
+        $this->detectLanguage();
     }
 
     /**
@@ -131,13 +134,7 @@ class Component extends \yii\base\Component {
     public function saveLanguage($language) {
 
         Yii::$app->language = $language;
-        $cookie = new \yii\web\Cookie([
-            'name' => $this->cookieName,
-            'value' => $language,
-            'expire' => time() + 86400 * $this->expireDays
-        ]);
-
-        Yii::$app->response->cookies->add($cookie);
+        $this->saveLanguageIntoCookie($language);
 
         if (is_callable($this->callback)) {
             call_user_func($this->callback);
@@ -148,6 +145,45 @@ class Component extends \yii\base\Component {
         }
 
         return $this->_redirect();
+    }
+
+    /**
+     * Determine language based on UserAgent.
+     */
+    public function detectLanguage() {
+        $acceptableLanguages = Yii::$app->getRequest()->getAcceptableLanguages();
+        foreach ($acceptableLanguages as $language) {
+            if ($this->_isValidLanguage($language)) {
+                Yii::$app->language = $language;
+                $this->saveLanguageIntoCookie($language);
+                return;
+            }
+        }
+
+        foreach ($this->languages as $key => $value) {
+            foreach ($acceptableLanguages as $language) {
+                $pattern = preg_quote(substr($language, 0, 2), '/');
+                if (preg_match('/^' . $pattern . '/', $value) || preg_match('/^' . $pattern . '/', $key)) {
+                    Yii::$app->language = $language;
+                    $this->saveLanguageIntoCookie($language);
+                    return;
+                }
+            }
+        }
+    }
+
+    /**
+     * Save language into cookie.
+     * @param string $language
+     */
+    public function saveLanguageIntoCookie($language) {
+        $cookie = new \yii\web\Cookie([
+            'name' => $this->cookieName,
+            'value' => $language,
+            'expire' => time() + 86400 * $this->expireDays
+        ]);
+
+        Yii::$app->response->cookies->add($cookie);
     }
 
     /**
