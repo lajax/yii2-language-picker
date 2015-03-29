@@ -164,7 +164,7 @@ class Component extends \yii\base\Component {
             foreach ($acceptableLanguages as $language) {
                 $pattern = preg_quote(substr($language, 0, 2), '/');
                 if (preg_match('/^' . $pattern . '/', $value) || preg_match('/^' . $pattern . '/', $key)) {
-                    Yii::$app->language = $language;
+                    Yii::$app->language = $this->_isValidLanguage($key) ? $key : $value;
                     $this->saveLanguageIntoCookie($language);
                     return;
                 }
