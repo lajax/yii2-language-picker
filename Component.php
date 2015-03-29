@@ -160,12 +160,12 @@ class Component extends \yii\base\Component {
             }
         }
 
-        foreach ($this->languages as $key => $value) {
-            foreach ($acceptableLanguages as $language) {
-                $pattern = preg_quote(substr($language, 0, 2), '/');
+        foreach ($acceptableLanguages as $language) {
+            $pattern = preg_quote(substr($language, 0, 2), '/');
+            foreach ($this->languages as $key => $value) {
                 if (preg_match('/^' . $pattern . '/', $value) || preg_match('/^' . $pattern . '/', $key)) {
                     Yii::$app->language = $this->_isValidLanguage($key) ? $key : $value;
-                    $this->saveLanguageIntoCookie($language);
+                    $this->saveLanguageIntoCookie(Yii::$app->language);
                     return;
                 }
             }
