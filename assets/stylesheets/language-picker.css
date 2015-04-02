@@ -57,10 +57,12 @@
     opacity:1.0;
 }
 
-.language-picker.dropdown-list ul {
+.language-picker.dropdown-list ul, .language-picker.dropup-list ul{
     display:none;
 }
 
-.language-picker.dropdown-list:hover ul, .language-picker.dropdown-list ul.active {
+.language-picker.dropdown-list:hover ul, .language-picker.dropdown-list ul.active,
+.language-picker.dropup-list:hover ul, .language-picker.dropup-list ul.active {
     display:block;
+    background:#fff;
 }
