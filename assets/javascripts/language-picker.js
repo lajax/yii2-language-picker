@@ -8,14 +8,17 @@ $(document).ready(function () {
 
 var LanguagePicker = {
     init: function () {
-        this.render();
         $('body').on('click', '.language-picker ul a', $.proxy(function (event) {
             this.change($(event.currentTarget).attr('href'));
             return false;
         }, this));
-        $('body').on('click', '.language-picker.dropdown-list a', function () {
-            $(this).parent().find('ul').toggleClass('active');
-        });
+        $('body').on('click', '.language-picker.dropdown-list a, .language-picker.dropup-list a', $.proxy(function (event) {
+            this.render($(event.currentTarget).closest('.language-picker'));
+            $(event.currentTarget).parent().find('ul').toggleClass('active');
+        }, this));
+        $('body').on('mouseover', '.language-picker.dropdown-list a, .language-picker.dropup-list a', $.proxy(function (event) {
+            this.render($(event.currentTarget).closest('.language-picker'));
+        }, this));
         $('body').on('mouseout', '.language-picker.dropdown-list', function () {
             $(this).find('ul').removeClass('active');
         });
@@ -25,18 +28,18 @@ var LanguagePicker = {
             document.location.reload();
         });
     },
-    render: function () {
-        var height = $(window).height();
-        $('.language-picker.dropdown-list').each(function () {
-            var containerHeight = Math.round($(this).height() / 2.5);
-            var listHeight = $(this).find('ul').height();
-            var top = $(this).position().top;
-            if ((top + listHeight > height) && (top - height > 0)) {
-                $(this).addClass('dropup-list')
-                        .removeClass('dropdown-list')
-                        .find('ul')
-                        .css({top: -(listHeight + containerHeight)});
-            }
-        });
+    render: function ($object) {
+        // Restore the dropdown state
+        if ($object.hasClass('dropup-list')) {
+            $object.addClass('dropdown-list').removeClass('dropup-list');
+        }
+        
+        var height = $(window).height() + $(window).scrollTop();
+        var containerHeight = $object.height() - ($object.find('a').eq(0).height());
+        var listHeight = $object.find('ul').height();
+        var top = $object.position().top;
+        if (top + containerHeight + listHeight > height && (top - height > 0 || height - top < height / 2)) {
+            $object.addClass('dropup-list').removeClass('dropdown-list');
+        }
     }
 };

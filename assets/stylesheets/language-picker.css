@@ -61,6 +61,11 @@
     display:none;
 }
 
+.language-picker.dropup-list ul {
+    top: auto;
+    bottom: 100%;
+}
+
 .language-picker.dropdown-list:hover ul, .language-picker.dropdown-list ul.active,
 .language-picker.dropup-list:hover ul, .language-picker.dropup-list ul.active {
     display:block;
