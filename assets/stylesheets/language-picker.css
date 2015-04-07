@@ -5,7 +5,7 @@
 
 .language-picker {
     position:relative;
-    display: table-cell;
+    display: inline-block;
 }
 
 
@@ -26,6 +26,7 @@
     white-space:nowrap;
     left:-5px;
 }
+
 
 .language-picker.dropdown-list ul {
     background:#fff;
