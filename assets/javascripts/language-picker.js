@@ -10,16 +10,17 @@ var LanguagePicker = {
     init: function () {
         $('body').on('click', '.language-picker ul a', $.proxy(function (event) {
             this.change($(event.currentTarget).attr('href'));
-            return false;
+            event.preventDefault();
         }, this));
         $('body').on('click', '.language-picker.dropdown-list a, .language-picker.dropup-list a', $.proxy(function (event) {
             this.render($(event.currentTarget).closest('.language-picker'));
             $(event.currentTarget).parent().find('ul').toggleClass('active');
+            event.preventDefault();
         }, this));
         $('body').on('mouseover', '.language-picker.dropdown-list a, .language-picker.dropup-list a', $.proxy(function (event) {
             this.render($(event.currentTarget).closest('.language-picker'));
         }, this));
-        $('body').on('mouseout', '.language-picker.dropdown-list', function () {
+        $('body').on('mouseout', '.language-picker.dropdown-list, .language-picker.dropup-list', function () {
             $(this).find('ul').removeClass('active');
         });
     },
