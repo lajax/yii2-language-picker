@@ -7,6 +7,7 @@ $(document).ready(function () {
 });
 
 var LanguagePicker = {
+    _rendering: false,
     init: function () {
         $('body').on('click', '.language-picker ul a', $.proxy(function (event) {
             this.change($(event.currentTarget).attr('href'));
@@ -30,17 +31,25 @@ var LanguagePicker = {
         });
     },
     render: function ($object) {
+        if (this._rendering) {
+            return;
+        }
+        
+        this._rendering = true;
+        
         // Restore the dropdown state
         if ($object.hasClass('dropup-list')) {
             $object.addClass('dropdown-list').removeClass('dropup-list');
         }
         
         var height = $(window).height() + $(window).scrollTop();
-        var containerHeight = $object.height() - ($object.find('a').eq(0).height());
+        var containerHeight = $object.height() - $object.find('a').eq(0).height();
         var listHeight = $object.find('ul').height();
         var top = $object.position().top;
         if (top + containerHeight + listHeight > height && (top - height > 0 || height - top < height / 2)) {
             $object.addClass('dropup-list').removeClass('dropdown-list');
         }
+        
+        this._rendering = false;
     }
 };
