@@ -182,14 +182,13 @@ class LanguagePicker extends \yii\base\Widget {
         }
         foreach ($this->languages as $language => $name) {
             $name = $isInteger ? '' : $name;
-            if (Yii::$app->language == $language && $this->skin == self::SKIN_DROPDOWN) {
+            if (Yii::$app->language == $language) {
                 $activeItem = $this->renderItem($language, $name, $this->activeItemTemplate);
-            } else if (Yii::$app->language == $language) {
-                $items .= $this->renderItem($language, $name, $this->activeItemTemplate);
             } else {
                 $items .= $this->renderItem($language, $name, $this->itemTemplate);
             }
         }
+        if ($this->skin != self::SKIN_DROPDOWN) $items .= $activeItem;
 
         echo strtr($this->parentTemplate, ['{activeItem}' => $activeItem, '{items}' => $items, '{size}' => $this->size]);
     }
