@@ -3,6 +3,7 @@
 namespace lajax\languagepicker\widgets;
 
 use Yii;
+use yii\helpers\Url;
 use yii\helpers\Html;
 
 /**
@@ -72,7 +73,7 @@ class LanguagePicker extends \yii\base\Widget {
     private $_SKINS = [
         self::SKIN_DROPDOWN => [
             'itemTemplate' => '<li><a href="{link}" title="{language}"><i class="{language}"></i> {name}</a></li>',
-            'activeItemTemplate' => '<a href="javascript:void(0);" title="{language}"><i class="{language}"></i> {name}</a>',
+            'activeItemTemplate' => '<a href="" title="{language}"><i class="{language}"></i> {name}</a>',
             'parentTemplate' => '<div class="language-picker dropdown-list {size}"><div>{activeItem}<ul>{items}</ul></div></div>',
         ],
         self::SKIN_BUTTON => [
@@ -148,11 +149,6 @@ class LanguagePicker extends \yii\base\Widget {
     public $encodeLabels = true;
 
     /**
-     * @var string Anchor text for the link that sets the language.
-     */
-    public $link = '/?language-picker-language={language}&';
-
-    /**
      * @inheritdoc
      */
     public static function widget($config = array()) {
@@ -186,14 +182,13 @@ class LanguagePicker extends \yii\base\Widget {
         }
         foreach ($this->languages as $language => $name) {
             $name = $isInteger ? '' : $name;
-            if (Yii::$app->language == $language && $this->skin == self::SKIN_DROPDOWN) {
+            if (Yii::$app->language == $language) {
                 $activeItem = $this->renderItem($language, $name, $this->activeItemTemplate);
-            } else if (Yii::$app->language == $language) {
-                $items .= $this->renderItem($language, $name, $this->activeItemTemplate);
             } else {
                 $items .= $this->renderItem($language, $name, $this->itemTemplate);
             }
         }
+        if ($this->skin != self::SKIN_DROPDOWN) $items .= $activeItem;
 
         echo strtr($this->parentTemplate, ['{activeItem}' => $activeItem, '{items}' => $items, '{size}' => $this->size]);
     }
@@ -257,9 +252,9 @@ class LanguagePicker extends \yii\base\Widget {
             $name = Html::encode($name);
         }
 
-        $link = strtr($this->link, ['{language}' => $language]);
+        $params = array_merge([''], Yii::$app->request->queryParams, ['language-picker-language' => $language]);
         return strtr($template, [
-            '{link}' => Yii::$app->urlManager->createUrl($link),
+            '{link}' => Url::to($params),
             '{name}' => $name,
             '{language}' => $language,
         ]);
