@@ -3,6 +3,7 @@
 namespace lajax\languagepicker\widgets;
 
 use Yii;
+use yii\helpers\Url;
 use yii\helpers\Html;
 
 /**
@@ -148,11 +149,6 @@ class LanguagePicker extends \yii\base\Widget {
     public $encodeLabels = true;
 
     /**
-     * @var string Anchor text for the link that sets the language.
-     */
-    public $link = '/?language-picker-language={language}&';
-
-    /**
      * @inheritdoc
      */
     public static function widget($config = array()) {
@@ -257,9 +253,9 @@ class LanguagePicker extends \yii\base\Widget {
             $name = Html::encode($name);
         }
 
-        $link = strtr($this->link, ['{language}' => $language]);
+        $params = array_merge([''], Yii::$app->request->queryParams, ['language-picker-language' => $language]);
         return strtr($template, [
-            '{link}' => Yii::$app->urlManager->createUrl($link),
+            '{link}' => Url::to($params),
             '{name}' => $name,
             '{language}' => $language,
         ]);
