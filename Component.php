@@ -127,7 +127,7 @@ class Component extends \yii\base\Component {
     }
 
     /**
-     * Saving laguage into cookie and database.
+     * Saving language into cookie and database.
      * @param string $language - The language to save.
      * @return static
      */
