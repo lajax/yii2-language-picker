@@ -45,7 +45,8 @@ use yii\helpers\Html;
  * @author Lajos Molnar <lajax.m@gmail.com>
  * @since 1.0
  */
-class LanguagePicker extends \yii\base\Widget {
+class LanguagePicker extends \yii\base\Widget
+{
 
     /**
      * Type of pre-defined skins (drop down list).
@@ -101,7 +102,7 @@ class LanguagePicker extends \yii\base\Widget {
      * @var string size of the icons.
      */
     public $size;
-    
+
     /**
      * @var string The structure of the parent template.
      */
@@ -151,7 +152,8 @@ class LanguagePicker extends \yii\base\Widget {
     /**
      * @inheritdoc
      */
-    public static function widget($config = array()) {
+    public static function widget($config = array())
+    {
         if (empty($config['languages']) || !is_array($config['languages'])) {
             $config['languages'] = Yii::$app->languagepicker->languages;
         }
@@ -162,7 +164,8 @@ class LanguagePicker extends \yii\base\Widget {
     /**
      * @inheritdoc
      */
-    public function init() {
+    public function init()
+    {
 
         $this->_initSkin();
 
@@ -172,14 +175,47 @@ class LanguagePicker extends \yii\base\Widget {
     /**
      * @inheritdoc
      */
-    public function run() {
-
-        $items = '';
-        $activeItem = '';
+    public function run()
+    {
         $isInteger = is_integer(key($this->languages));
         if ($isInteger) {
             $this->languages = array_flip($this->languages);
         }
+
+        if ($this->skin == self::SKIN_BUTTON) {
+            $languagePicker = $this->_renderButton($isInteger);
+        } else {
+            $languagePicker = $this->_renderDropdown($isInteger);
+        }
+
+        echo $languagePicker;
+    }
+
+    /**
+     * Rendering button list.
+     * @param boolean $isInteger
+     * @return string
+     */
+    private function _renderButton($isInteger)
+    {
+        $items = '';
+        foreach ($this->languages as $language => $name) {
+            $name = $isInteger ? '' : $name;
+            $template = Yii::$app->language == $language ? $this->activeItemTemplate : $this->itemTemplate;
+            $items .= $this->renderItem($language, $name, $template);
+        }
+
+        return strtr($this->parentTemplate, ['{items}' => $items, '{size}' => $this->size]);
+    }
+
+    /**
+     * Rendering dropdown list.
+     * @param boolean $isInteger
+     * @return string
+     */
+    private function _renderDropdown($isInteger)
+    {
+        $items = $activeItem = '';
         foreach ($this->languages as $language => $name) {
             $name = $isInteger ? '' : $name;
             if (Yii::$app->language == $language) {
@@ -188,20 +224,20 @@ class LanguagePicker extends \yii\base\Widget {
                 $items .= $this->renderItem($language, $name, $this->itemTemplate);
             }
         }
-        if ($this->skin != self::SKIN_DROPDOWN) $items .= $activeItem;
 
-        echo strtr($this->parentTemplate, ['{activeItem}' => $activeItem, '{items}' => $items, '{size}' => $this->size]);
+        return strtr($this->parentTemplate, ['{activeItem}' => $activeItem, '{items}' => $items, '{size}' => $this->size]);
     }
 
     /**
      * Initialising skin.
      */
-    private function _initSkin() {
+    private function _initSkin()
+    {
 
         if ($this->skin && empty($this->_SKINS[$this->skin])) {
             throw new \yii\base\InvalidConfigException('The skin does not exist: ' . $this->skin);
         }
-        
+
         if ($this->size && empty($this->_SIZES[$this->size])) {
             throw new \yii\base\InvalidConfigException('The size does not exist: ' . $this->size);
         }
@@ -213,7 +249,7 @@ class LanguagePicker extends \yii\base\Widget {
                 }
             }
         }
-        
+
         if ($this->size) {
             $this->languageAsset = $this->_SIZES[$this->size];
         }
@@ -224,7 +260,8 @@ class LanguagePicker extends \yii\base\Widget {
     /**
      * Adding Assets files to view.
      */
-    private function _registerAssets() {
+    private function _registerAssets()
+    {
 
         if ($this->languageAsset) {
             $this->view->registerAssetBundle($this->languageAsset);
@@ -245,7 +282,8 @@ class LanguagePicker extends \yii\base\Widget {
      *  "{language}" unique identifier of the language element. e.g.: en, en-US
      * @return string the rendered result
      */
-    protected function renderItem($language, $name, $template) {
+    protected function renderItem($language, $name, $template)
+    {
 
         if ($this->encodeLabels) {
             $language = Html::encode($language);

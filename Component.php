@@ -48,7 +48,8 @@ use Yii;
  * @author Lajos Molnar <lajax.m@gmail.com>
  * @since 1.0
  */
-class Component extends \yii\base\Component {
+class Component extends \yii\base\Component
+{
 
     /**
      * @var function - function to execute after changing the language of the site.
@@ -83,7 +84,8 @@ class Component extends \yii\base\Component {
      * @param array $config
      * @throws \yii\base\InvalidConfigException
      */
-    public function __construct($config = array()) {
+    public function __construct($config = array())
+    {
 
         if (empty($config['languages'])) {
             throw new \yii\base\InvalidConfigException('Missing languages');
@@ -97,7 +99,8 @@ class Component extends \yii\base\Component {
     /**
      * @inheritdoc
      */
-    public function init() {
+    public function init()
+    {
 
         $this->initLanguage();
 
@@ -107,7 +110,8 @@ class Component extends \yii\base\Component {
     /**
      * Setting the language of the site.
      */
-    public function initLanguage() {
+    public function initLanguage()
+    {
         if (isset($_GET['language-picker-language'])) {
             if ($this->_isValidLanguage($_GET['language-picker-language'])) {
                 return $this->saveLanguage($_GET['language-picker-language']);
@@ -131,7 +135,8 @@ class Component extends \yii\base\Component {
      * @param string $language - The language to save.
      * @return static
      */
-    public function saveLanguage($language) {
+    public function saveLanguage($language)
+    {
 
         Yii::$app->language = $language;
         $this->saveLanguageIntoCookie($language);
@@ -150,7 +155,8 @@ class Component extends \yii\base\Component {
     /**
      * Determine language based on UserAgent.
      */
-    public function detectLanguage() {
+    public function detectLanguage()
+    {
         $acceptableLanguages = Yii::$app->getRequest()->getAcceptableLanguages();
         foreach ($acceptableLanguages as $language) {
             if ($this->_isValidLanguage($language)) {
@@ -176,7 +182,8 @@ class Component extends \yii\base\Component {
      * Save language into cookie.
      * @param string $language
      */
-    public function saveLanguageIntoCookie($language) {
+    public function saveLanguageIntoCookie($language)
+    {
         $cookie = new \yii\web\Cookie([
             'name' => $this->cookieName,
             'value' => $language,
@@ -190,7 +197,8 @@ class Component extends \yii\base\Component {
      * Redirects the browser to the referer URL.
      * @return static
      */
-    private function _redirect() {
+    private function _redirect()
+    {
         $redirect = Yii::$app->request->absoluteUrl == Yii::$app->request->referrer ? '/' : Yii::$app->request->referrer;
         return Yii::$app->response->redirect($redirect);
     }
@@ -200,7 +208,8 @@ class Component extends \yii\base\Component {
      * @param string $language
      * @return boolean
      */
-    private function _isValidLanguage($language) {
+    private function _isValidLanguage($language)
+    {
         return is_string($language) && (isset($this->languages[$language]) || in_array($language, $this->languages));
     }
 
