@@ -182,6 +182,27 @@ Usage
 ]); ?>
 ```
 
+####Add Language Picker into the Bootstrap Navbar
+
+```php
+<?php
+NavBar::begin([
+    // ...
+]);
+echo Nav::widget([
+    // ...
+]);
+?>
+<div class="navbar-text pull-right">
+    <?=
+    \lajax\languagepicker\widgets\LanguagePicker::widget([
+        'skin' => \lajax\languagepicker\widgets\LanguagePicker::SKIN_DROPDOWN,
+        'size' => \lajax\languagepicker\widgets\LanguagePicker::SIZE_LARGE
+    ]);
+    ?>
+</div>
+<?php NavBar::end(); ?>
+```
 
 Screenshots
 -----------
