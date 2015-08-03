@@ -47,10 +47,11 @@ use Yii;
  *
  * @author Lajos Molnar <lajax.m@gmail.com>
  * @since 1.0
+ *
+ *
  */
 class Component extends \yii\base\Component
 {
-
     /**
      * @var function - function to execute after changing the language of the site.
      */
@@ -65,6 +66,12 @@ class Component extends \yii\base\Component
      * @var string Name of the cookie.
      */
     public $cookieName = 'language';
+
+    /**
+     * @var string Domain name for the cookie.
+     * @author Lucjan Sulewski <lucjan.sulewski@gmail.com>
+     */
+    private $_domainName;
 
     /**
      * @var array List of available languages
@@ -169,7 +176,8 @@ class Component extends \yii\base\Component
         foreach ($acceptableLanguages as $language) {
             $pattern = preg_quote(substr($language, 0, 2), '/');
             foreach ($this->languages as $key => $value) {
-                if (preg_match('/^' . $pattern . '/', $value) || preg_match('/^' . $pattern . '/', $key)) {
+                if (preg_match('/^'.$pattern.'/', $value) || preg_match('/^'.$pattern.'/',
+                        $key)) {
                     Yii::$app->language = $this->_isValidLanguage($key) ? $key : $value;
                     $this->saveLanguageIntoCookie(Yii::$app->language);
                     return;
@@ -186,6 +194,7 @@ class Component extends \yii\base\Component
     {
         $cookie = new \yii\web\Cookie([
             'name' => $this->cookieName,
+            'domain' => $this->domainName,
             'value' => $language,
             'expire' => time() + 86400 * $this->expireDays
         ]);
@@ -199,7 +208,8 @@ class Component extends \yii\base\Component
      */
     private function _redirect()
     {
-        $redirect = Yii::$app->request->absoluteUrl == Yii::$app->request->referrer ? '/' : Yii::$app->request->referrer;
+        $redirect = Yii::$app->request->absoluteUrl == Yii::$app->request->referrer
+                ? '/' : Yii::$app->request->referrer;
         return Yii::$app->response->redirect($redirect);
     }
 
@@ -210,7 +220,30 @@ class Component extends \yii\base\Component
      */
     private function _isValidLanguage($language)
     {
-        return is_string($language) && (isset($this->languages[$language]) || in_array($language, $this->languages));
+        return is_string($language) && (isset($this->languages[$language]) || in_array($language,
+                $this->languages));
     }
 
+    /**
+     * Determines whether the language received as a parameter can be processed.
+     * @param string $language
+     * @return boolean
+     *
+     * @author Lucjan Sulewski <lucjan.sulewski@gmail.com>
+     */
+    public function getDomainName()
+    {
+        return isset($this->_domainName) ? $this->_domainName : Yii::$app->request->url;
+    }
+
+    /**
+     * Setting the domain name of the site.
+     * @param string $value
+     * 
+     * @author Lucjan Sulewski <lucjan.sulewski@gmail.com>
+     */
+    public function setDomainName($value)
+    {
+        $this->_domainName = $value;
+    }
 }
