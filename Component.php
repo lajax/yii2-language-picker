@@ -32,6 +32,7 @@ use Yii;
  *          'class' => 'lajax\languagepicker\Component',
  *          'languages' => ['en-US', 'de-DE', 'fr-FR'],     // List of available languages
  *          'cookieName' => 'language',                     // Name of the cookie.
+ *          'cookieDomain' => 'example.com',                // Domain of the cookie.
  *          'expireDays' => 64,                             // The expiration time of the cookie is 64 days.
  *          'callback' => function() {
  *              if (!\Yii::$app->user->isGuest) {
@@ -50,7 +51,7 @@ use Yii;
  */
 class Component extends \yii\base\Component
 {
-
+    
     /**
      * @var function - function to execute after changing the language of the site.
      */
@@ -67,6 +68,12 @@ class Component extends \yii\base\Component
     public $cookieName = 'language';
 
     /**
+     * @var string The domain that the language cookie is available to.
+     * For details see the $domain parameter description of PHP setcookie() function.
+     */
+    public $cookieDomain = '';
+
+    /**
      * @var array List of available languages
      *  Formats supported in the pre-defined skins:
      * 
@@ -76,6 +83,7 @@ class Component extends \yii\base\Component
      *  ['en-US', 'de-DE', 'fr-FR']
      *  ['en-US' => 'English', 'de-DE' => 'Deutsch', 'fr-FR' => 'Français']
      * ~~~
+     * 
      */
     public $languages;
 
@@ -186,6 +194,7 @@ class Component extends \yii\base\Component
     {
         $cookie = new \yii\web\Cookie([
             'name' => $this->cookieName,
+            'domain' => $this->cookieDomain,
             'value' => $language,
             'expire' => time() + 86400 * $this->expireDays
         ]);

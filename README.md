@@ -70,6 +70,7 @@ Identifier of the language element. e.g.: en, en-US
         'class' => 'lajax\languagepicker\Component',
         'languages' => ['en-US', 'de-DE', 'fr-FR'],         // List of available languages (icons only)
         'cookieName' => 'language',                         // Name of the cookie.
+        'cookieDomain' => 'example.com',                    // Domain of the cookie.
         'expireDays' => 64,                                 // The expiration time of the cookie is 64 days.
         'callback' => function() {
             if (!\Yii::$app->user->isGuest) {
@@ -111,6 +112,7 @@ Identifier of the language element. e.g.: en, en-US
             return \lajax\translatemanager\models\Language::getLanguageNames(true);
         },
         'cookieName' => 'language',                         // Name of the cookie.
+        'cookieDomain' => 'example.com',                    // Domain of the cookie.
         'expireDays' => 64,                                 // The expiration time of the cookie is 64 days.
         'callback' => function() {
             if (!\Yii::$app->user->isGuest) {
@@ -182,27 +184,6 @@ Usage
 ]); ?>
 ```
 
-####Add Language Picker into the Bootstrap Navbar
-
-```php
-<?php
-NavBar::begin([
-    // ...
-]);
-echo Nav::widget([
-    // ...
-]);
-?>
-<div class="navbar-text pull-right">
-    <?=
-    \lajax\languagepicker\widgets\LanguagePicker::widget([
-        'skin' => \lajax\languagepicker\widgets\LanguagePicker::SKIN_DROPDOWN,
-        'size' => \lajax\languagepicker\widgets\LanguagePicker::SIZE_LARGE
-    ]);
-    ?>
-</div>
-<?php NavBar::end(); ?>
-```
 
 Screenshots
 -----------
