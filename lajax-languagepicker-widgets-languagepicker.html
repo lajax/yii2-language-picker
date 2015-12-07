@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        <link href="./assets/951dca60/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/c10240b/style.css" rel="stylesheet">
+<script src="./assets/5df3c80c/jquery.js"></script>
+<script src="./assets/951dca60/js/bootstrap.js"></script>
+<script src="./assets/6cc6e842/jssearch.js"></script>    <title>LanguagePicker, lajax\languagepicker\widgets\LanguagePicker - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w8" class="navbar-inverse navbar-fixed-top navbar" role="navigation"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w8-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w8-collapse" class="collapse navbar-collapse"><ul id="w9" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-5" data-toggle="collapse" data-parent="#navigation">lajax\languagepicker <b class="caret"></b></a><div id="navigation-5" class="submenu panel-collapse collapse"><a class="list-group-item" href="./lajax-languagepicker-component.html">Component</a></div>
+<a class="list-group-item" href="#navigation-6" data-toggle="collapse" data-parent="#navigation">lajax\languagepicker\bundles <b class="caret"></b></a><div id="navigation-6" class="submenu panel-collapse collapse"><a class="list-group-item" href="./lajax-languagepicker-bundles-languagelargeiconsasset.html">LanguageLargeIconsAsset</a>
+<a class="list-group-item" href="./lajax-languagepicker-bundles-languagepluginasset.html">LanguagePluginAsset</a>
+<a class="list-group-item" href="./lajax-languagepicker-bundles-languagesmalliconsasset.html">LanguageSmallIconsAsset</a></div>
+<a class="list-group-item active" href="#navigation-7" data-toggle="collapse" data-parent="#navigation">lajax\languagepicker\widgets <b class="caret"></b></a><div id="navigation-7" class="submenu panel-collapse collapse in"><a class="list-group-item active" href="./lajax-languagepicker-widgets-languagepicker.html">LanguagePicker</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main">
+        <h1>Class lajax\languagepicker\widgets\LanguagePicker</h1>
+<div id="nav">
+    <a href="index.html">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+                    | <a href="#constants">Constants</a>
+    </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a> &raquo;
+yii\base\Widget</td></tr>
+                                        <tr><th>Available since version</th><td>1.0</td></tr>
+            </table>
+
+<div id="classDescription">
+    <p><strong>Language Picker widget.</strong></p>
+    <p>Examples:
+Pre-defined button list:</p>
+<pre><code>\lajax\languagepicker\widgets\LanguagePicker::widget([
+     'skin' =&gt; \lajax\languagepicker\widgets\LanguagePicker::SKIN_BUTTON,
+     'size' =&gt; \lajax\languagepicker\widgets\LanguagePicker::SIZE_SMALL
+]);
+</code></pre>
+<p>Pre-defined DropDown list:</p>
+<pre><code> \lajax\languagepicker\widgets\LanguagePicker::widget([
+     'skin' =&gt; \lajax\languagepicker\widgets\LanguagePicker::SKIN_DROPDOWN,
+     'size' =&gt; \lajax\languagepicker\widgets\LanguagePicker::SIZE_LARGE
+]);
+</code></pre>
+<p>Defining your own template:</p>
+<pre><code> \lajax\languagepicker\widgets\LanguagePicker::widget([
+     'itemTemplate' =&gt; '&lt;li&gt;&lt;a href="{link}"&gt;&lt;i class="{language}" title="{language}"&gt;&lt;/i&gt; {name}&lt;/a&gt;&lt;/li&gt;',
+     'activeItemTemplate' =&gt; '&lt;a href="{link}" title="{language}"&gt;&lt;i class="{language}"&gt;&lt;/i&gt; {name}&lt;/a&gt;',
+     'parentTemplate' =&gt; '&lt;div class="language-picker dropdown-list {size}"&gt;&lt;div&gt;{activeItem}&lt;ul&gt;{items}&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;',
+
+     'languageAsset' =&gt; 'lajax\languagepicker\bundles\LanguageLargeIconsAsset',      // StyleSheets
+     'languagePluginAsset' =&gt; 'lajax\languagepicker\bundles\LanguagePluginAsset',    // JavasSripts
+]);
+</code></pre>
+
+    </div>
+
+<a id="properties"></a>
+
+<div class="summary doc-property">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-property" />
+    <col class="col-type" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr id="$activeItemTemplate">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#$activeItemTemplate-detail">$activeItemTemplate</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>The structure of the active language element.</td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+            <tr id="$encodeLabels">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#$encodeLabels-detail">$encodeLabels</a></td>
+        <td><a href="http://www.php.net/language.types.boolean">boolean</a></td>
+        <td>Whether to HTML-encode the link labels.</td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+            <tr id="$itemTemplate">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#$itemTemplate-detail">$itemTemplate</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>The structure of one entry in the list of language elements.</td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+            <tr id="$languageAsset">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#$languageAsset-detail">$languageAsset</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>Adding StyleSheet and its dependencies.</td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+            <tr id="$languagePluginAsset">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#$languagePluginAsset-detail">$languagePluginAsset</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>Adding JavaScript and its dependencies.</td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+            <tr id="$languages">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#$languages-detail">$languages</a></td>
+        <td><a href="http://www.php.net/language.types.array">array</a></td>
+        <td>List of available languages.</td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+            <tr id="$parentTemplate">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#$parentTemplate-detail">$parentTemplate</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>The structure of the parent template.</td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+            <tr id="$size">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#$size-detail">$size</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>Size of the icons.</td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+            <tr id="$skin">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#$skin-detail">$skin</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>ID of pre-defined skin (optional).</td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+    </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="summary doc-method">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr id="init()">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#init()-detail">init()</a></td>
+        <td></td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+                <tr id="run()">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#run()-detail">run()</a></td>
+        <td></td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+            <tr id="widget()">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#widget()-detail">widget()</a></td>
+        <td></td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+    </table>
+</div>
+
+<div class="summary doc-method">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+            <tr id="renderItem()">
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html#renderItem()-detail">renderItem()</a></td>
+        <td>Rendering languege element.</td>
+        <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+    </tr>
+            </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+<div class="summary doc-const">
+    <h2>Constants</h2>
+
+    <p><a href="#" class="toggle">Hide inherited constants</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+    <colgroup>
+        <col class="col-const" />
+        <col class="col-value" />
+        <col class="col-description" />
+        <col class="col-defined" />
+    </colgroup>
+    <tr>
+        <th>Constant</th><th>Value</th><th>Description</th><th>Defined By</th>
+    </tr>
+            <tr id="SIZE_LARGE">
+          <td id="SIZE_LARGE-detail">SIZE_LARGE</td>
+          <td>'large'</td>
+          <td>Size of pre-defined skins (large).
+</td>
+          <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+        </tr>
+            <tr id="SIZE_SMALL">
+          <td id="SIZE_SMALL-detail">SIZE_SMALL</td>
+          <td>'small'</td>
+          <td>Size of pre-defined skins (small).
+</td>
+          <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+        </tr>
+            <tr id="SKIN_BUTTON">
+          <td id="SKIN_BUTTON-detail">SKIN_BUTTON</td>
+          <td>'button'</td>
+          <td>Type of pre-defined skins (button list).
+</td>
+          <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+        </tr>
+            <tr id="SKIN_DROPDOWN">
+          <td id="SKIN_DROPDOWN-detail">SKIN_DROPDOWN</td>
+          <td>'dropdown'</td>
+          <td>Type of pre-defined skins (drop down list).
+</td>
+          <td><a href="lajax-languagepicker-widgets-languagepicker.html">lajax\languagepicker\widgets\LanguagePicker</a></td>
+        </tr>
+        </table>
+</div>
+
+<h2>Property Details</h2>
+
+<div class="property-doc">
+
+    <div class="detail-header h3" id="$activeItemTemplate-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#$activeItemTemplate-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $activeItemTemplate        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="lajax-languagepicker-widgets-languagepicker.html#$activeItemTemplate-detail">$activeItemTemplate</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>The structure of the active language element.</p>
+
+    
+
+    <div class="detail-header h3" id="$encodeLabels-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#$encodeLabels-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $encodeLabels        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.boolean">boolean</a> <a href="lajax-languagepicker-widgets-languagepicker.html#$encodeLabels-detail">$encodeLabels</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span></div>
+
+    <p>Whether to HTML-encode the link labels.</p>
+
+    
+
+    <div class="detail-header h3" id="$itemTemplate-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#$itemTemplate-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $itemTemplate        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="lajax-languagepicker-widgets-languagepicker.html#$itemTemplate-detail">$itemTemplate</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>The structure of one entry in the list of language elements.</p>
+
+    
+
+    <div class="detail-header h3" id="$languageAsset-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#$languageAsset-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $languageAsset        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="lajax-languagepicker-widgets-languagepicker.html#$languageAsset-detail">$languageAsset</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>Adding StyleSheet and its dependencies.</p>
+
+    
+
+    <div class="detail-header h3" id="$languagePluginAsset-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#$languagePluginAsset-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $languagePluginAsset        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="lajax-languagepicker-widgets-languagepicker.html#$languagePluginAsset-detail">$languagePluginAsset</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'lajax\languagepicker\bundles\LanguagePluginAsset'</span></div>
+
+    <p>Adding JavaScript and its dependencies.
+Changing languages is done through Ajax by default. If you do not wish to use Ajax, set value to null.</p>
+
+    
+
+    <div class="detail-header h3" id="$languages-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#$languages-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $languages        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.array">array</a> <a href="lajax-languagepicker-widgets-languagepicker.html#$languages-detail">$languages</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>List of available languages.
+ Formats supported in the pre-defined skins:</p>
+<pre><code> ['en', 'de', 'es']
+ ['en' =&gt; 'English', 'de' =&gt; 'Deutsch', 'fr' =&gt; 'Français']
+ ['en-US', 'de-DE', 'fr-FR']
+ ['en-US' =&gt; 'English', 'de-DE' =&gt; 'Deutsch', 'fr-FR' =&gt; 'Français']
+</code></pre>
+
+    
+
+    <div class="detail-header h3" id="$parentTemplate-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#$parentTemplate-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $parentTemplate        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="lajax-languagepicker-widgets-languagepicker.html#$parentTemplate-detail">$parentTemplate</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>The structure of the parent template.</p>
+
+    
+
+    <div class="detail-header h3" id="$size-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#$size-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $size        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="lajax-languagepicker-widgets-languagepicker.html#$size-detail">$size</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>Size of the icons.</p>
+
+    
+
+    <div class="detail-header h3" id="$skin-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#$skin-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $skin        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="lajax-languagepicker-widgets-languagepicker.html#$skin-detail">$skin</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>ID of pre-defined skin (optional).</p>
+
+    
+</div>
+<h2>Method Details</h2>
+
+<div class="method-doc">
+
+    <div class="detail-header h3" id="init()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#init()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        init()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature">void <strong><a href="lajax-languagepicker-widgets-languagepicker.html#init()-detail">init</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="renderItem()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#renderItem()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        renderItem()
+        <span class="detail-header-tag small">
+            protected            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong>Rendering languege element.</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><a href="http://www.php.net/language.types.string">string</a> <strong><a href="lajax-languagepicker-widgets-languagepicker.html#renderItem()-detail">renderItem</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$language</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$template&nbsp;</span><span style="color: #007700">)</span></td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$language</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>The property of a given language.</p>
+</td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$name</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>The property of a language name.</p>
+</td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$template</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>The basic structure of a language element of the displayed language picker
+Elements to replace: "{link}" URL to call when changing language.
+ "{name}" name corresponding to a language element, e.g.: English
+ "{language}" unique identifier of the language element. e.g.: en, en-US</p>
+</td>
+                </tr>
+                                        <tr>
+                  <th class="param-name-col">return</th>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>The rendered result</p>
+</td>
+                </tr>
+                                    </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="run()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#run()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        run()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature">void <strong><a href="lajax-languagepicker-widgets-languagepicker.html#run()-detail">run</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="widget()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="lajax-languagepicker-widgets-languagepicker.html#widget()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        widget()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature">void <strong><a href="lajax-languagepicker-widgets-languagepicker.html#widget()-detail">widget</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$config&nbsp;</span><span style="color: #007700">=&nbsp;[]&nbsp;)</span></td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$config</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+</div>
+        </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $("a.toggle").on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents(".summary").find(".inherited").show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents(".summary").find(".inherited").hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*
+     $(".sourceCode a.show").toggle(function () {
+     $(this).text($(this).text().replace(/show/,'hide'));
+     $(this).parents(".sourceCode").find("div.code").show();
+     },function () {
+     $(this).text($(this).text().replace(/hide/,'show'));
+     $(this).parents(".sourceCode").find("div.code").hide();
+     });
+     $("a.sourceLink").click(function () {
+     $(this).attr('target','_blank');
+     });
+     */
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Tue, 01 Sep 2015 16:12:15 +0000</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script type="text/javascript">jQuery(document).ready(function () {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) shiftWindow();
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>
