@@ -216,6 +216,7 @@ Links
 -----
 
 - [GitHub](https://github.com/lajax/yii2-language-picker)
+- [Api Docs](http://lajax.github.io/yii2-language-picker)
 - [Packagist](https://packagist.org/packages/lajax/yii2-language-picker)
 - [Yii Extensions](http://www.yiiframework.com/extension/yii2-language-picker)
 - [Flag Sprites](http://www.flag-sprites.com)
