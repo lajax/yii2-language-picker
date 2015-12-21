@@ -290,7 +290,7 @@ class LanguagePicker extends \yii\base\Widget
             $name = Html::encode($name);
         }
 
-        $params = array_merge([''], Yii::$app->request->queryParams, ['language-picker-language' => $language]);
+        $params = array_merge([''], Yii::$app->request->queryParams, ['language' => $language]);
         return strtr($template, [
             '{link}' => Url::to($params),
             '{name}' => $name,
