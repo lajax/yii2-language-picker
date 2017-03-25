@@ -128,7 +128,9 @@ class Component extends \yii\base\Component
             }
         } else if (Yii::$app->request->cookies->has($this->cookieName)) {
             if ($this->_isValidLanguage(Yii::$app->request->cookies->getValue($this->cookieName))) {
-                Yii::$app->language = Yii::$app->request->cookies->getValue($this->cookieName);
+                $language = Yii::$app->request->cookies->getValue($this->cookieName);
+                Yii::$app->language = $language;
+                Yii::$app->formatter->locale = $language;
                 return;
             } else {
                 Yii::$app->response->cookies->remove($this->cookieName);
