@@ -120,9 +120,9 @@ class Component extends \yii\base\Component
      */
     public function initLanguage()
     {
-        if (isset($_GET['language-picker-language'])) {
-            if ($this->_isValidLanguage($_GET['language-picker-language'])) {
-                return $this->saveLanguage($_GET['language-picker-language']);
+        if (isset($_GET['language'])) {
+            if ($this->_isValidLanguage($_GET['language'])) {
+                return $this->saveLanguage($_GET['language']);
             } else if (!Yii::$app->request->isAjax) {
                 return $this->_redirect();
             }
