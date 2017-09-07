@@ -21,7 +21,7 @@
 .language-picker.small i.bg-BG, .language-picker.small i.bg {background-position: -112px 0}
 .language-picker.small i.pt-BR {background-position: 0 -11px}
 .language-picker.small i.be-BY, .language-picker.small i.be {background-position: -16px -11px}
-.language-picker.small i.fr-CA {background-position: -32px -11px}
+.language-picker.small i.en-CA, .language-picker.small i.fr-CA {background-position: -32px -11px}
 .language-picker.small i.zh-CN, .language-picker.small i.zh {background-position: -48px -11px}
 .language-picker.small i.cs-CZ, .language-picker.small i.cs {background-position: -64px -11px}
 .language-picker.small i.de-DE, .language-picker.small i.de {background-position: -80px -11px}
