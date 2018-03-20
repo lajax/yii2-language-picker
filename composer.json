@@ -16,7 +16,6 @@
         }
     },
     "require": {
-        "yiisoft/yii2": "*",
-        "phpspec/php-diff": ">=1.0.2"
+        "yiisoft/yii2": "*"
     }
 }
