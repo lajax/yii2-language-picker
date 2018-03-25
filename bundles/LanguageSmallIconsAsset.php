@@ -6,11 +6,13 @@ use yii\web\AssetBundle;
 
 /**
  * LanguageSmallIcons asset bundle
+ *
  * @author Lajos Molnár <lajax.m@gmail.com>
+ *
  * @since 1.0
  */
-class LanguageSmallIconsAsset extends AssetBundle {
-
+class LanguageSmallIconsAsset extends AssetBundle
+{
     /**
      * @inheritdoc
      */
@@ -23,5 +25,4 @@ class LanguageSmallIconsAsset extends AssetBundle {
         'stylesheets/language-picker.min.css',
         'stylesheets/flags-small.min.css',
     ];
-
 }

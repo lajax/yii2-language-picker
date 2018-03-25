@@ -8,46 +8,46 @@ use yii\helpers\Html;
 
 /**
  * Language Picker widget.
- * 
+ *
  * Examples:
  * Pre-defined button list:
- * 
+ *
  * ~~~
  * \lajax\languagepicker\widgets\LanguagePicker::widget([
  *      'skin' => \lajax\languagepicker\widgets\LanguagePicker::SKIN_BUTTON,
  *      'size' => \lajax\languagepicker\widgets\LanguagePicker::SIZE_SMALL
  * ]);
  * ~~~
- * 
+ *
  * Pre-defined DropDown list:
- * 
+ *
  * ~~~
  *  \lajax\languagepicker\widgets\LanguagePicker::widget([
  *      'skin' => \lajax\languagepicker\widgets\LanguagePicker::SKIN_DROPDOWN,
  *      'size' => \lajax\languagepicker\widgets\LanguagePicker::SIZE_LARGE
  * ]);
  * ~~~
- * 
+ *
  * Defining your own template:
- * 
+ *
  * ~~~
  *  \lajax\languagepicker\widgets\LanguagePicker::widget([
  *      'itemTemplate' => '<li><a href="{link}"><i class="{language}" title="{language}"></i> {name}</a></li>',
  *      'activeItemTemplate' => '<a href="{link}" title="{language}"><i class="{language}"></i> {name}</a>',
  *      'parentTemplate' => '<div class="language-picker dropdown-list {size}"><div>{activeItem}<ul>{items}</ul></div></div>',
- *       
+ *
  *      'languageAsset' => 'lajax\languagepicker\bundles\LanguageLargeIconsAsset',      // StyleSheets
  *      'languagePluginAsset' => 'lajax\languagepicker\bundles\LanguagePluginAsset',    // JavasSripts
  * ]);
  * ~~~
- * 
- * 
+ *
+ *
  * @author Lajos Molnar <lajax.m@gmail.com>
+ *
  * @since 1.0
  */
 class LanguagePicker extends \yii\base\Widget
 {
-
     /**
      * Type of pre-defined skins (drop down list).
      */
@@ -98,7 +98,6 @@ class LanguagePicker extends \yii\base\Widget
     public $skin;
 
     /**
-     *
      * @var string size of the icons.
      */
     public $size;
@@ -119,13 +118,11 @@ class LanguagePicker extends \yii\base\Widget
     public $activeItemTemplate;
 
     /**
-     * example: http://www.yiiframework.com/doc-2.0/guide-structure-assets.html
      * @var string Adding StyleSheet and its dependencies.
      */
     public $languageAsset;
 
     /**
-     * example: http://www.yiiframework.com/doc-2.0/guide-structure-assets.html
      * @var string Adding JavaScript and its dependencies.
      * Changing languages is done through Ajax by default. If you do not wish to use Ajax, set value to null.
      */
@@ -134,7 +131,7 @@ class LanguagePicker extends \yii\base\Widget
     /**
      * @var array List of available languages.
      *  Formats supported in the pre-defined skins:
-     * 
+     *
      * ~~~
      *  ['en', 'de', 'es']
      *  ['en' => 'English', 'de' => 'Deutsch', 'fr' => 'Français']
@@ -145,14 +142,14 @@ class LanguagePicker extends \yii\base\Widget
     public $languages;
 
     /**
-     * @var boolean whether to HTML-encode the link labels.
+     * @var bool whether to HTML-encode the link labels.
      */
     public $encodeLabels = true;
 
     /**
      * @inheritdoc
      */
-    public static function widget($config = array())
+    public static function widget($config = [])
     {
         if (empty($config['languages']) || !is_array($config['languages'])) {
             $config['languages'] = Yii::$app->languagepicker->languages;
@@ -166,7 +163,6 @@ class LanguagePicker extends \yii\base\Widget
      */
     public function init()
     {
-
         $this->_initSkin();
 
         parent::init();
@@ -193,7 +189,9 @@ class LanguagePicker extends \yii\base\Widget
 
     /**
      * Rendering button list.
-     * @param boolean $isInteger
+     *
+     * @param bool $isInteger
+     *
      * @return string
      */
     private function _renderButton($isInteger)
@@ -210,7 +208,9 @@ class LanguagePicker extends \yii\base\Widget
 
     /**
      * Rendering dropdown list.
-     * @param boolean $isInteger
+     *
+     * @param bool $isInteger
+     *
      * @return string
      */
     private function _renderDropdown($isInteger)
@@ -233,7 +233,6 @@ class LanguagePicker extends \yii\base\Widget
      */
     private function _initSkin()
     {
-
         if ($this->skin && empty($this->_SKINS[$this->skin])) {
             throw new \yii\base\InvalidConfigException('The skin does not exist: ' . $this->skin);
         }
@@ -262,7 +261,6 @@ class LanguagePicker extends \yii\base\Widget
      */
     private function _registerAssets()
     {
-
         if ($this->languageAsset) {
             $this->view->registerAssetBundle($this->languageAsset);
         }
@@ -274,28 +272,29 @@ class LanguagePicker extends \yii\base\Widget
 
     /**
      * Rendering languege element.
+     *
      * @param string $language The property of a given language.
      * @param string $name The property of a language name.
      * @param string $template The basic structure of a language element of the displayed language picker
      * Elements to replace: "{link}" URL to call when changing language.
      *  "{name}" name corresponding to a language element, e.g.: English
      *  "{language}" unique identifier of the language element. e.g.: en, en-US
+     *
      * @return string the rendered result
      */
     protected function renderItem($language, $name, $template)
     {
-
         if ($this->encodeLabels) {
             $language = Html::encode($language);
             $name = Html::encode($name);
         }
 
         $params = array_merge([''], Yii::$app->request->queryParams, ['language-picker-language' => $language]);
+
         return strtr($template, [
             '{link}' => Url::to($params),
             '{name}' => $name,
             '{language}' => $language,
         ]);
     }
-
 }

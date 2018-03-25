@@ -6,11 +6,13 @@ use yii\web\AssetBundle;
 
 /**
  * LanguagePlugin asset bundle
+ *
  * @author Lajos Molnár <lajax.m@gmail.com>
+ *
  * @since 1.0
  */
-class LanguagePluginAsset extends AssetBundle {
-
+class LanguagePluginAsset extends AssetBundle
+{
     /**
      * @inheritdoc
      */
@@ -29,5 +31,4 @@ class LanguagePluginAsset extends AssetBundle {
     public $depends = [
         'yii\web\JqueryAsset',
     ];
-
 }
