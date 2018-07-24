@@ -123,7 +123,7 @@ class Component extends \yii\base\Component
             if ($this->_isValidLanguage($_GET['language-picker-language'])) {
                 return $this->saveLanguage($_GET['language-picker-language']);
             } elseif (!Yii::$app->request->isAjax) {
-                return $this->_redirect();
+                return $this->redirect();
             }
         } elseif (Yii::$app->request->cookies->has($this->cookieName)) {
             if ($this->_isValidLanguage(Yii::$app->request->cookies->getValue($this->cookieName))) {
@@ -150,15 +150,15 @@ class Component extends \yii\base\Component
         Yii::$app->language = $language;
         $this->saveLanguageIntoCookie($language);
 
-        if (is_callable($this->callback)) {
-            call_user_func($this->callback);
+        if (\is_callable($this->callback)) {
+            \call_user_func($this->callback);
         }
 
         if (Yii::$app->request->isAjax) {
             Yii::$app->end();
         }
 
-        return $this->_redirect();
+        return $this->redirect();
     }
 
     /**
@@ -211,7 +211,7 @@ class Component extends \yii\base\Component
      *
      * @return static
      */
-    private function _redirect()
+    public function redirect()
     {
         $redirect = Yii::$app->request->absoluteUrl == Yii::$app->request->referrer ? '/' : Yii::$app->request->referrer;
 
